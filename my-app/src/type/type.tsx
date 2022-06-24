@@ -11,7 +11,6 @@ export type rawCur = {
     price: string
     state: string
     category: string
-    link: string
 }
 export type cardProps = {
     category: string
