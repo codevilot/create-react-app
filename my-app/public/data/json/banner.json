@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "물빠진 청바지!",
+        "desc": "이제 막 도착한 청바지를 구경해 보세요",
+        "img": "../../data/image/banner1.jpg",
+        "link": "page1"
+    },
+    {
+        "id": 2,
+        "title": "신속한 업무처리!",
+        "desc": "다양한 디지털 상품을 둘러보세요",
+        "img": "../../data/image/banner2.jpg",
+        "link": "page2"
+    },
+    {
+        "id": 3,
+        "title": "신속한 업무처리!",
+        "desc": "다양한 디지털 상품을 둘러보세요",
+        "img": "../../data/image/banner3.jpg",
+        "link": "page3"
+    }
+]
