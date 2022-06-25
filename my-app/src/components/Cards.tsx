@@ -17,12 +17,9 @@ export default function Cards() {
 
     return (
 
-        <div className="bg-gray-800 ">
-            <div className="max-w-screen-xl w-full mx-auto ">
-
-                {keys.map((key: string, idx: number) => (<Card category={key} items={cardInfo[key]} key={idx} />))}
-            </div>
-        </div>
+        <div>
+            {keys.map((key: string, idx: number) => (<Card category={key} items={cardInfo[key]} key={idx} />))}
+        </div >
 
     )
 }

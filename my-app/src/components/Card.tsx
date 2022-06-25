@@ -18,7 +18,6 @@ export default function Card(props: cardProps) {
                             <div className="text-white p-10">
                                 <div> {item.title}</div>
                                 <div>{item.price} </div>
-
                             </div>
                         </Link>
 

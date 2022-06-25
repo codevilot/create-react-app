@@ -12,10 +12,9 @@ export default function Header() {
                     <Link className="pr-3 text-sm" to="/fashion">패션</Link>
                     <Link className="pr-3 text-sm" to="/accessory">악세서리</Link>
                     <Link className="pr-3 text-sm" to="/digital">디지털</Link>
-
                 </div>
                 <div>
-                    aa
+                    👜
                 </div>
 
             </div>
