@@ -13,8 +13,14 @@ export default function Header() {
                     <Link className="pr-3 text-sm" to="/accessory">악세서리</Link>
                     <Link className="pr-3 text-sm" to="/digital">디지털</Link>
                 </div>
-                <div>
-                    👜
+                <div className='flex'>
+                    <div>
+                        ☀️
+                    </div>
+                    <input type="text" />
+                    <div>
+                        <Link to="/basket">👜</Link>
+                    </div>
                 </div>
 
             </div>
