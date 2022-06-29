@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import DarkmodeReducer from "./DarkmodeReducer";
-
+import BasketReducer from "./BasketReducer";
 const store = configureStore({
   reducer: {
-    globalState: DarkmodeReducer,
+    darkState: DarkmodeReducer,
+    basketState: BasketReducer,
   },
 });
 

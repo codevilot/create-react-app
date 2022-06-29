@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Category from "../page/Category";
 import Home from "../page/Home";
 import Fashion from "../page/Fashion";
 import Basket from "../page/Basket";
@@ -9,7 +10,7 @@ export default function Section() {
       <div className="max-w-screen-xl w-full mx-auto pb-20 pt-20">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/fashion" element={<Fashion />} />
+          <Route path="/:categoryId" element={<Category />} />
           <Route path="/basket" element={<Basket />} />
           <Route path="/product/:productId" element={<ProductHome />} />
         </Routes>

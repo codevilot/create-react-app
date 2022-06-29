@@ -1,24 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { basketState } from "../type/type";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { BasketState } from "../type/type";
 
-const initialState: basketState = {
-  basketState: JSON.stringify(localStorage.getItem("basketState") || {}),
+const initialState: BasketState = {
+  basket:
+    (
+      JSON.parse(localStorage.getItem("basket") || "{}") || {
+        basket: {},
+        all: 0,
+      }
+    ).basket || {},
+  all:
+    (
+      JSON.parse(localStorage.getItem("basket") || "{}") || {
+        basket: {},
+        all: 0,
+      }
+    ).all || 0,
 };
 const BasketReducer = createSlice({
   name: "basket",
   initialState,
   reducers: {
-    // changeMode: (state) => {
-    //   state.darkMode === "dark"
-    //     ? (state.darkMode = "light")
-    //     : (state.darkMode = "dark");
-    //   localStorage.setItem("darkMode", state.darkMode);
-    // },
-    add: (list, addId) => {
-      list = { ...list, addId: list.addId || 0 + 1 };
+    add(state, action: PayloadAction<number>) {
+      state.basket[action.payload] = (state.basket[action.payload] || 0) + 1;
+      state.all += 1;
+      localStorage.setItem("basket", JSON.stringify(state));
+    },
+    reduce(state, action: PayloadAction<number>) {
+      state.basket[action.payload] > 1
+        ? (state.basket[action.payload] = state.basket[action.payload] - 1)
+        : delete state.basket[action.payload];
+      state.all > 1 ? (state.all -= 1) : (state.all = 0);
+      localStorage.setItem("basket", JSON.stringify(state));
     },
   },
 });
 
-export const { add } = BasketReducer.actions;
+export const { add, reduce } = BasketReducer.actions;
 export default BasketReducer.reducer;

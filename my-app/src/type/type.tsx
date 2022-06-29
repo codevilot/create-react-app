@@ -14,10 +14,19 @@ export type rawCur = {
 };
 export type cardProps = {
   category: string;
+  range: string;
   items: Array<rawCur>;
 };
+export type paymentType = {
+  id: string;
+  stock: number;
+};
 export type state = {
-  globalState: { darkMode: string };
+  darkState: { darkMode: string };
+  basketState: {
+    basket: { [key: string]: number };
+    all: number;
+  };
 };
 
 export type banner = {
@@ -30,6 +39,8 @@ export type banner = {
 export type DarkMode = {
   darkMode: string;
 };
-export type basketState = {
-  productId: {};
+
+export type BasketState = {
+  basket: { [key: string]: number };
+  all: number;
 };

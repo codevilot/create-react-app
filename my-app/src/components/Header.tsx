@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   const state = useSelector((state: state) => state);
-  const isDark = state.globalState.darkMode;
+  const isDark = state.darkState.darkMode;
+  const basketNum = <>{state.basketState.all}</>;
   const dispatch = useDispatch();
-  console.log(isDark);
   const handleToggleMode = () => {
     dispatch(changeMode());
   };
   useEffect(() => {
     document.documentElement.setAttribute("class", isDark);
   }, [isDark]);
-
+  useEffect(() => {}, [basketNum]);
   return (
     <div className="dark:bg-stone-900 dark:text-white pt-5 pb-5 flex justify-center">
       <div className="flex justify-between max-w-screen-xl w-full">
@@ -38,6 +38,9 @@ export default function Header() {
           <input type="text" />
           <div>
             <Link to="/basket">👜</Link>
+            <div className="bg-red-500 w-5 h-5 flex justify-center items-center rounded-lg text-xs">
+              {basketNum}
+            </div>
           </div>
         </div>
       </div>

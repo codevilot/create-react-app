@@ -1,10 +1,18 @@
-import cards from "../../public/data/json/card.json";
+import products from "../../public/data/json/products.json";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
-export default function productHome(props: any) {
+import { add } from "../store/BasketReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { state } from "../type/type";
+export default function productHome() {
   const params = useParams();
-  console.log(params);
-  const data = cards.filter((item) => item["id"] == params.productId)[0];
+  const state = useSelector((state: state) => state);
+  const dispatch = useDispatch();
+  const handleCart = (id: string) => {
+    dispatch(add(Number(id)));
+  };
+
+  const data = products.filter((item) => item["id"] == params.productId)[0];
   const Rating = styled.div`
     background: -webkit-linear-gradient(
       180deg,
@@ -30,11 +38,14 @@ export default function productHome(props: any) {
         </div>
         <div className="text-3xl pt-5">${data.price}</div>
         <div className="flex pt-5">
-          <Link to="/basket">
-            <div className="bg-indigo-800 p-5 border-indigo-800 border-2 rounded-lg mr-5 text-white">
-              장바구니에 담기
-            </div>
-          </Link>
+          {/* <Link to="/basket"> */}
+          <div
+            className="bg-indigo-800 p-5 border-indigo-800 border-2 rounded-lg mr-5 text-white"
+            onClick={() => handleCart(data.id)}
+          >
+            장바구니에 담기
+          </div>
+          {/* </Link> */}
           <Link to="/basket">
             <div className="p-5 border-2 rounded-lg">장바구니로 이동</div>
           </Link>
