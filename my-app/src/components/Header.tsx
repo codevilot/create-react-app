@@ -17,19 +17,19 @@ export default function Header() {
   }, [isDark]);
   useEffect(() => {}, [basketNum]);
   return (
-    <div className="dark:bg-stone-900 dark:text-white pt-5 pb-5 flex justify-center">
-      <div className="flex justify-between max-w-screen-xl w-full">
+    <div className="fixed w-full dark:bg-stone-900 dark:text-white py-2 flex justify-center z-10">
+      <div className="flex justify-between max-w-screen-xl w-full font-bold">
         <div className="flex items-center">
-          <Link className="pr-3 text-xl" to="/">
+          <Link className="pr-7 text-xl" to="/">
             React Shop
           </Link>
-          <Link className="pr-3 text-sm" to="/fashion">
+          <Link className="pr-7 text-sm" to="/fashion">
             패션
           </Link>
-          <Link className="pr-3 text-sm" to="/accessory">
+          <Link className="pr-7 text-sm" to="/accessory">
             악세서리
           </Link>
-          <Link className="pr-3 text-sm" to="/digital">
+          <Link className="pr-7 text-sm" to="/digital">
             디지털
           </Link>
         </div>

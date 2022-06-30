@@ -34,8 +34,13 @@ const BasketReducer = createSlice({
       state.all > 1 ? (state.all -= 1) : (state.all = 0);
       localStorage.setItem("basket", JSON.stringify(state));
     },
+    clear(state) {
+      state.basket = {};
+      state.all += 0;
+      localStorage.setItem("basket", JSON.stringify(state));
+    },
   },
 });
 
-export const { add, reduce } = BasketReducer.actions;
+export const { add, reduce, clear } = BasketReducer.actions;
 export default BasketReducer.reducer;

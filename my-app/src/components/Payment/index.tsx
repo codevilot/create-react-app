@@ -1,11 +1,9 @@
 import products from "../../../public/data/json/products.json";
 import { paymentType } from "../../type/type";
 import { reduce, add } from "../../store/BasketReducer";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { state } from "../../type/type";
 export default function Payment(props: paymentType) {
-  const state = useSelector((state: state) => state);
   const info = (id: string) => {
     return products.filter((item) => item.id === id);
   };
@@ -17,13 +15,20 @@ export default function Payment(props: paymentType) {
     dispatch(reduce(Number(id)));
   };
   const paymentInfo = info(props.id)[0];
-  console.log(paymentInfo);
   return (
-    <div className="flex">
-      <img src={paymentInfo.img} alt="" />
-      <div>
-        <div className="text-white">{paymentInfo.title}</div>
-        <div className="text-white">${paymentInfo.price}</div>
+    <div className="flex mb-20">
+      <div className="h-56 w-56 bg-white">
+        <img
+          className="max-h-full max-w-full box-border m-auto p-5"
+          src={paymentInfo.img}
+          alt=""
+        />
+      </div>
+      <div className="h-56 flex flex-col place-content-center lg:px-12">
+        <div className="text-white text-xl">{paymentInfo.title}</div>
+        <div className="text-white text-3xl mt-2 mb-4">
+          $<span>{Number(paymentInfo.price) * props.stock}</span>
+        </div>
         <div className="text-white flex">
           <div
             className="bg-indigo-600 p-4 rounded-lg"
