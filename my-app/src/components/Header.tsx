@@ -15,7 +15,7 @@ export default function Header() {
   useEffect(() => {
     document.documentElement.setAttribute("class", isDark);
   }, [isDark]);
-  useEffect(() => {}, [basketNum]);
+  // useEffect(() => {}, [basketNum]);
   return (
     <div className="fixed w-full dark:bg-stone-900 dark:text-white py-2 flex justify-center z-10">
       <div className="flex justify-between max-w-screen-xl w-full font-bold">

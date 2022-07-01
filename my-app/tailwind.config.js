@@ -13,10 +13,14 @@ module.exports = {
       },
       minWidth: {
         "1/4": "20rem",
+        "540": "32rem",
       },
       height: {
         128: "48rem",
       },
+      color: {
+        'modal': '#0000004a',
+      }
     },
   },
 };
