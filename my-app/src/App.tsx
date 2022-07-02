@@ -5,19 +5,22 @@ import Header from "./components/Header";
 import MainBanner from "./components/MainBanner";
 import Footer from "./components/Footer";
 import Section from "./components/Section";
-
+import Drawer from "./components/Drawer"
 import { Provider } from "react-redux";
 import store from "./store/Store";
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Header />
-        <MainBanner />
-        <Section />
-        <Footer />
+        <div id="root" className="drawer h-full">
+          <div className="drawer-content">
+            <Header />
+            <MainBanner />
+            <Section />
+            <Footer />
+          </div>
+          <Drawer />
+        </div>
       </BrowserRouter>
     </Provider>
   );

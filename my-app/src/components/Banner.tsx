@@ -3,7 +3,9 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import banners from "../../public/data/json/banner.json";
 import { banner } from "../type/type";
+
 export default function Home() {
+
   return (
     <Carousel showThumbs={false}>
       {banners.map((banner: banner) => (

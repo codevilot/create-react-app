@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
   theme: {
     extend: {
       maxWidth: {
@@ -20,6 +20,9 @@ module.exports = {
       },
       color: {
         'modal': '#0000004a',
+      },
+      gridAutoColumns: {
+        '1fr': 'minmax(320px,1fr)',
       }
     },
   },
