@@ -2,16 +2,23 @@ export type rawAcc = {
   [key: string]: Array<rawCur>;
 };
 export type rawCur = {
-  id: string;
-  title: string;
-  desc: string;
-  score: string;
-  participants: string;
-  img: string;
-  price: string;
-  state: string;
   category: string;
+  description: string;
+  id: number;
+  image: string;
+  price: number;
+  rating: { rate: number; count: number };
+  title: string;
 };
+export type list = {
+  category: string;
+  description: string;
+  id: number;
+  image: string;
+  price: number;
+  rating: { rate: number; count: number };
+  title: string;
+}[];
 
 export type cardProps = {
   category: string;
@@ -31,7 +38,7 @@ export type state = {
     basket: { [key: string]: number };
     all: number;
   };
-  modalState: { modalMode: boolean }
+  modalState: { modalMode: boolean };
 };
 
 export type banner = {
@@ -59,5 +66,5 @@ export type shopInfo = {
   price: string;
   state: string;
   category: string;
-  stock: number
+  stock: number;
 };

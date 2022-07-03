@@ -1,15 +1,18 @@
-import products from "../../../public/data/json/products.json";
+import { useEffect, useState } from "react";
 import Card from "./Card";
-import { rawAcc, rawCur } from "../../type/type";
+import { rawAcc, rawCur, list } from "../../type/type";
+import { getProducts } from "../../tools/fetch";
 export default function Cards(props: { range: string }) {
+  const [list, setList] = useState<list>([]);
   const cardInfo = props.range === "all" ? infoAll() : info(props.range);
+  const keys = Object.keys(cardInfo);
   function info(range: string) {
     const result: rawAcc = {};
-    result[range] = products.filter((item) => item.category === range);
+    result[range] = list.filter((item) => item.category === range);
     return result;
   }
   function infoAll() {
-    const result = products.reduce((acc: rawAcc, cur: rawCur) => {
+    const result = list.reduce((acc: rawAcc, cur: rawCur) => {
       if (acc.hasOwnProperty(cur.category)) {
         return {
           ...acc,
@@ -24,14 +27,18 @@ export default function Cards(props: { range: string }) {
     }, {});
     return result;
   }
-  const keys = Object.keys(cardInfo);
+
+  useEffect(() => {
+    getProducts().then((res: list) => setList(res));
+  }, []);
+
   return (
     <div>
-      {keys.map((key: string, idx: number) => (
+      {keys.map((key) => (
         <Card
           category={key}
           items={cardInfo[key]}
-          key={idx}
+          key={key}
           range={props.range}
         />
       ))}

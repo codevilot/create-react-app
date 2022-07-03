@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import MainBanner from "./components/MainBanner";
 import Footer from "./components/Footer";
 import Section from "./components/Section";
-import Drawer from "./components/Drawer"
+import Drawer from "./components/Drawer";
 import { Provider } from "react-redux";
 import store from "./store/Store";
 function App() {
