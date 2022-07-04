@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { cardProps, rawCur } from "../../type/type";
 export default function Card(props: cardProps) {
-  const range = props.range === "all" ? 4 : 100;
-  // console.log(props);
   return (
     <div className="px-4">
       <h2 className="mb-5 lg:mb-8 text-3xl lg:text-4xl text-center font-bold dark:text-white pt-10 text-black">
@@ -26,7 +24,7 @@ export default function Card(props: cardProps) {
               </Link>
             </div>
           ))
-          .slice(0, range)}
+          .slice(0, props.range === "all" ? 4 : props.items.length)}
       </div>
     </div>
   );

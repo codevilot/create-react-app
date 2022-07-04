@@ -1,35 +1,27 @@
 import products from "../../public/data/json/products.json";
-import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { state, shopInfo } from "../type/type";
-import { ModalMode } from "../store/ModalReducer"
 import Payment from "../components/Payment";
-import Modal from "../components/Modal"
+import { clear } from "../store/BasketReducer";
 export default function Basket() {
-
   const state = useSelector((state: state) => state);
+  const dispatch = useDispatch();
   const basketNum = state.basketState.all;
   const shopInfo = state.basketState.basket;
-  const modalState = state.modalState;
-  const [modal, setModal] = useState(false)
-  const dispatch = useDispatch();
-  const handleModal = () => {
-    dispatch(ModalMode());
+  const clearCart = () => {
+    dispatch(clear());
   };
   const info = () => {
     return products.filter((item: shopInfo) => {
       if (shopInfo[item.id]) {
-        item.stock = shopInfo[item.id]
-        return item
+        item.stock = shopInfo[item.id];
+        return item;
       }
-    })
+    });
   };
-  const basketInfo = info()
-  useEffect(() => {
+  const basketInfo = info();
 
-    setModal(modalState.modalMode)
-  }, [modalState]);
   return (
     <div>
       {!basketNum || state.basketState.all === 0 ? (
@@ -48,20 +40,51 @@ export default function Basket() {
         </div>
       ) : (
         <div>
-          {modal ? <Modal /> : null}
           {basketInfo.map((element) => (
-            <Payment price={element.price} id={element.id} stock={element.stock} key={element.id} title={element.title} img={element.img} />
+            <Payment
+              price={element.price}
+              id={element.id}
+              stock={element.stock}
+              key={element.id}
+              title={element.title}
+              img={element.img}
+            />
           ))}
 
           <div className="flex place-content-end">
-            <div className=" w-fit p-5 rounded-lg mr-5 text-white">${basketInfo.reduce((acc, cur) => acc + Number(cur.price) * cur.stock, 0)}</div>
-            <div className=" w-fit bg-indigo-600 p-5 border-indigo-600 border-2 rounded-lg mr-5 text-white"
-              onClick={handleModal}>
+            <div className="self-center w-fit rounded-lg mr-5 text-white">
+              $
+              {basketInfo.reduce(
+                (acc, cur) => acc + Number(cur.price) * cur.stock,
+                0
+              )}
+            </div>
+
+            <label htmlFor="my-modal" className="btn btn-primary modal-button">
               구매하기
+            </label>
+
+            <input type="checkbox" id="my-modal" className="modal-toggle" />
+            <div className="modal">
+              <div className="modal-box">
+                <h3 className="font-bold text-lg">정말로 구매하시겠습니까?</h3>
+                <p className="py-4">장바구니의 모든 상품들이 삭제됩니다.</p>
+                <div className="modal-action">
+                  <label
+                    htmlFor="my-modal"
+                    className="btn btn-primary"
+                    onClick={clearCart}
+                  >
+                    네
+                  </label>
+                  <label htmlFor="my-modal" className="btn">
+                    아니오
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
       )}
     </div>
   );

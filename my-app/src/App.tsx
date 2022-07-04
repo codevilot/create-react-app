@@ -13,7 +13,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <div id="root" className="drawer h-full">
-          <div className="drawer-content">
+          <div className="drawer-content z-10">
             <Header />
             <MainBanner />
             <Section />

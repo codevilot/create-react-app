@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { BasketState } from "../type/type";
-
 const initialState: BasketState = {
   basket:
     (
@@ -36,7 +35,7 @@ const BasketReducer = createSlice({
     },
     clear(state) {
       state.basket = {};
-      state.all += 0;
+      state.all = 0;
       localStorage.setItem("basket", JSON.stringify(state));
     },
   },

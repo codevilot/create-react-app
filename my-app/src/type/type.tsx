@@ -38,7 +38,8 @@ export type state = {
     basket: { [key: string]: number };
     all: number;
   };
-  modalState: { modalMode: boolean };
+
+  listState: { categories: string[] };
 };
 
 export type banner = {

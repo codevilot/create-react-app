@@ -2,13 +2,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { state } from "../type/type";
 import { changeMode } from "../store/DarkmodeReducer";
+import { AppDispatch } from "../store/Store";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { getAllCategories } from "../store/ListReducer";
+
 export default function Header() {
   const state = useSelector((state: state) => state);
   const isDark = state.darkState.darkMode;
   const basketNum = <>{state.basketState.all}</>;
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const handleToggleMode = () => {
     dispatch(changeMode());
   };
@@ -16,12 +18,14 @@ export default function Header() {
   useEffect(() => {
     document.documentElement.setAttribute("class", isDark);
   }, [isDark]);
-
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, []);
   return (
     <div className="fixed w-full dark:bg-stone-900 dark:text-white p-2 flex justify-center z-10 h-20">
       <div className="flex justify-between max-w-screen-xl w-full font-bold">
         <div className="flex items-center">
-          <div className="drawer-content">
+          <div className="drawer-content lg:hidden">
             <label htmlFor="my-drawer" className="drawer-button">
               <img
                 src="../../public/icon/menu.png"
@@ -29,19 +33,17 @@ export default function Header() {
               />
             </label>
           </div>
-          <Link className="pr-7 text-xl" to="/">
+          <Link className="pr-7 text-xl " to="/">
             React Shop
           </Link>
           <div className="hidden md:flex">
-            <Link className="pr-7 text-sm" to="/fashion">
-              패션
-            </Link>
-            <Link className="pr-7 text-sm" to="/accessory">
-              악세서리
-            </Link>
-            <Link className="pr-7 text-sm" to="/digital">
-              디지털
-            </Link>
+            {state.listState.categories.map((element, idx) => (
+              <div key={idx}>
+                <Link className="pr-7 text-sm" to={"/" + element}>
+                  {element}
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
         <div className="flex items-center">
