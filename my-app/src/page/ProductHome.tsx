@@ -38,14 +38,14 @@ export default function productHome() {
         </div>
         <div className="text-3xl pt-5">${data.price}</div>
         <div className="flex pt-5">
-          {/* <Link to="/basket"> */}
+
           <div
             className="bg-indigo-800 p-5 border-indigo-800 border-2 rounded-lg mr-5 text-white"
             onClick={() => handleCart(data.id)}
           >
             장바구니에 담기
           </div>
-          {/* </Link> */}
+
           <Link to="/basket">
             <div className="p-5 border-2 rounded-lg">장바구니로 이동</div>
           </Link>

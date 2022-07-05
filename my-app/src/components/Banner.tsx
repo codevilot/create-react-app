@@ -9,8 +9,7 @@ export default function Home() {
   return (
     <Carousel showThumbs={false}>
       {banners.map((banner: banner) => (
-        <div key={banner.id} className="lg:h-[48rem] h-80">
-          <img src={banner.img} />
+        <div key={banner.id} className="lg:h-[35rem] h-80 bg-cover" style={{ backgroundImage: "url(" + `${banner.img}` + ")" }}>
           <div className="absolute inset-y-1/2 inset-x-1/4 pl-5">
             <div className="text-2xl text-left">{banner.title}</div>
             <div className="text-xs text-left pt-1 pb-2">{banner.desc}</div>

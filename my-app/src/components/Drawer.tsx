@@ -29,12 +29,12 @@ export default function Drawer() {
       />
       <div className="drawer-side w-screen">
         <label htmlFor="my-drawer" className="drawer-overlay z-10"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content h-screen">
+        <ul className="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content h-screen dark:bg-black bg-white dark:text-white text-black">
           {state.listState.categories.map((element, idx) => (
             <li key={idx}>
               <Link
                 className="pr-7 text-sm w-full"
-                to={"/" + element}
+                to={"/category/" + element}
                 onClick={handleClick}
               >
                 {element}
